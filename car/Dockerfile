@@ -4,7 +4,7 @@ COPY ./pom.xml ./
 COPY ./src ./src
 RUN mvn clean package -DskipTests
 
-FROM openjdk:17-jdk-alpine
+FROM eclipse-temurin:17-jdk-alpine
 WORKDIR /app
 ARG JAR_FILE=target/*.jar
 COPY --from=builder /app/${JAR_FILE} app.jar
